@@ -35,6 +35,7 @@ class MC():
     def get_data(self):
 
         url = "https://coinmarketcap.com/currencies/" + self.coin +"/historical-data/?start=20200106&end=20200203"
+        print(url)
         headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
         req = Request(url=url, headers=headers)
         html = urlopen(req).read()
@@ -64,9 +65,11 @@ if __name__ == "__main__":
     
     try:
             
-        coin_list = ["bitcoin", "bitcoin-cash", "ethereum","litecoin", "ripple", "monacoin", "ethereum-classic"]
-        # coin_list = ["nem", "lisk", "bitcrystals", "comsa-eth", "factom", "pepe-cash", "qash", "storjcoin-x","counterparty","zencash"]
-        coin_list = ["tether", "binance-coin", "eos", "bitcoin-sv"]
+        coin_list = ["bitcoin", "bitcoin-cash", "ethereum","litecoin", "ripple-china", "monacoin", "ethereum-classic"]
+        coin_list = ["nem", "lisk", "bitcrystals", "comsa-eth", "factom", "pepe-cash", "qash", "storjcoin-x","counterparty"]
+        coin_list = ["tether", "binance-coin", "eos", "bitcoin-sv","xrp"]
+        coin_list = ["horizen","dogecoin"]
+
         for i in coin_list:
             mc = MC(i)
             mc.get_data()
