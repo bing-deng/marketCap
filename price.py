@@ -51,12 +51,16 @@ class MC():
                 print("")
                 j = j + 1
                 k = 0
-            if k < 4 or k == 5:
-                price = float(text) * rate
-                price = "%.4f" % float(price) 
-                self.table.write(j,k,price)
-            else:
-                self.table.write(j,k,text)
+            # if k < 4 or k == 5:
+            #     price = float(text) * rate
+            #     price = "%.4f" % float(price) 
+            #     self.table.write(j,k,price)
+            # else:
+            #     self.table.write(j,k,text)
+            price = float(text) * rate
+            price = "%.4f" % float(price) 
+            price = price.replace(",","")
+            self.table.write(j,k,price)
             k = k + 1
         
            
@@ -65,11 +69,10 @@ if __name__ == "__main__":
     
     try:
         # stellar xml
-        coin_list = ["bitcoin", "bitcoin-cash", "ethereum","litecoin", "ripple-china", "monacoin", "ethereum-classic"]
+        # coin_list = ["bitcoin", "bitcoin-cash", "ethereum","litecoin", "xrp", "monacoin", "ethereum-classic"]
         coin_list = ["nem", "lisk", "bitcrystals", "comsa-eth", "factom", "pepe-cash", "qash", "storjcoin-x","counterparty"]
-        coin_list = ["tether", "binance-coin", "eos", "bitcoin-sv","xrp"]
-        coin_list = ["horizen","dogecoin","stellar","fisco"]
-        coin_list = ["fisco"]
+        coin_list = ["tether", "binance-coin", "eos", "bitcoin-sv"]
+        coin_list = ["horizen","dogecoin","stellar"]
 
         for i in coin_list:
             mc = MC(i)
