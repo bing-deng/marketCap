@@ -64,11 +64,12 @@ class MC():
 if __name__ == "__main__":
     
     try:
-            
+        # stellar xml
         coin_list = ["bitcoin", "bitcoin-cash", "ethereum","litecoin", "ripple-china", "monacoin", "ethereum-classic"]
         coin_list = ["nem", "lisk", "bitcrystals", "comsa-eth", "factom", "pepe-cash", "qash", "storjcoin-x","counterparty"]
         coin_list = ["tether", "binance-coin", "eos", "bitcoin-sv","xrp"]
-        coin_list = ["horizen","dogecoin"]
+        coin_list = ["horizen","dogecoin","stellar","fisco"]
+        coin_list = ["fisco"]
 
         for i in coin_list:
             mc = MC(i)
