@@ -10,7 +10,7 @@ l = r["data"]
 for index,i in enumerate(l[::-1]):
     d =  datetime.fromtimestamp(i[0])
     # print(d,end=" ")
-    rate = 108.63
+    rate = 107.677399
     open_price = i[1] * rate
     hight_price = i[2] * rate
     low_price = i[3] * rate
@@ -18,7 +18,7 @@ for index,i in enumerate(l[::-1]):
     volume = i[5] * rate
     # print(open_price," ",hight_price," ",low_price," ",close_price)
     # print("%.4f" % hight_price)
-    print("%.2f" % volume)
-    if index == 28:
+    print("%.2f" % open_price,"%.2f" % hight_price,"%.2f" % low_price,"%.2f" % close_price,"%.2f" % volume,str(d))
+    if index == 27:
         break
 

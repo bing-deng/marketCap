@@ -9,12 +9,16 @@ data = xlwt.Workbook()
 
 style = xlwt.XFStyle()  # 创建一个样式对象，初始化样式
 
+font = xlwt.Font() 
+font.name = "Calibri" # ??'Times New Roman'
+style.font = font
+
 al = xlwt.Alignment()
 al.horz = 0x01      
 al.vert = 0x01      
 style.alignment = al
-
-rate = 108.63
+# Calibri
+rate = 107.677399
 class MC():
     def __init__(self,coin):
 
@@ -35,7 +39,7 @@ class MC():
 
     def get_data(self):
         #start=20200101&end=20200202"
-        url = "https://coinmarketcap.com/currencies/" + self.coin +"/historical-data/?start=20191201&end=20200202"
+        url = "https://coinmarketcap.com/currencies/" + self.coin +"/historical-data/?start=20200203&end=20200301"
         print(url)
         headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
         req = Request(url=url, headers=headers)
@@ -89,7 +93,7 @@ if __name__ == "__main__":
     try:
         # stellar xml
         coin_list = ["bitcoin", "bitcoin-cash", "ethereum","litecoin", "xrp", "monacoin", "ethereum-classic"]
-        coin_list = ["nem", "lisk", "bitcrystals", "comsa-eth", "factom", "pepe-cash", "qash", "storjcoin-x","counterparty"]
+        # coin_list = ["nem", "lisk", "bitcrystals", "comsa-eth", "factom", "pepe-cash", "qash", "storjcoin-x","counterparty"]
         coin_list = ["tether", "binance-coin", "eos", "bitcoin-sv","horizen","dogecoin","stellar"]
         
 
