@@ -18,7 +18,7 @@ al.horz = 0x01
 al.vert = 0x01      
 style.alignment = al
 # Calibri
-rate = 107.677399
+rate = 107.37
 class MC():
     def __init__(self,coin):
 
@@ -39,7 +39,7 @@ class MC():
 
     def get_data(self):
         #start=20200101&end=20200202"
-        url = "https://coinmarketcap.com/currencies/" + self.coin +"/historical-data/?start=20200203&end=20200301"
+        url = "https://coinmarketcap.com/currencies/" + self.coin +"/historical-data/?start=20200301&end=202000401"
         print(url)
         headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
         req = Request(url=url, headers=headers)
@@ -92,10 +92,9 @@ if __name__ == "__main__":
     
     try:
         # stellar xml
-        coin_list = ["bitcoin", "bitcoin-cash", "ethereum","litecoin", "xrp", "monacoin", "ethereum-classic"]
+        # coin_list = ["bitcoin", "bitcoin-cash", "ethereum","litecoin", "xrp", "monacoin", "ethereum-classic"]
         coin_list = ["nem", "lisk", "bitcrystals", "comsa-eth", "factom", "pepe-cash", "qash", "storjcoin-x","counterparty"]
-        coin_list = ["tether", "binance-coin", "eos", "bitcoin-sv","horizen","dogecoin","stellar","cardano"]
-
+        coin_list = ["horizen","tether", "binance-coin", "eos", "bitcoin-sv","dogecoin","stellar","cardano","qtum"]
 
         for i in coin_list:
             mc = MC(i)
