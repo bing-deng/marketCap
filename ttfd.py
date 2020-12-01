@@ -15,14 +15,14 @@ table.write(0,4,u'close')
 table.write(0,5,u'volume')
 table.write(0,6,u'marketcap')
 
-url = "https://openapi.ttf.one/open/api/get_records?symbol=ttfdusdt&period=1440"
+url = "https://openapi.ttf.one/open/api/get_records?symbol=ttfdusdt&period=2000"
 r = requests.get(url).json()
 l = r["data"]
 
 for index,i in enumerate(l[::-1]):
     d =  datetime.fromtimestamp(i[0])
     # print(d,end=" ")
-    rate = 107.677399
+    rate = 107.37
     open_price = i[1] * rate
     hight_price = i[2] * rate
     low_price = i[3] * rate

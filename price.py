@@ -4,6 +4,8 @@ import xlwt # write excel 新建一个Excel文件（只能通过新建写入）
 import time
 import math
 from datetime import datetime
+from fake_useragent import UserAgent #用于随机生成user-agent
+
 
 data = xlwt.Workbook()
 
@@ -18,7 +20,7 @@ al.horz = 0x01
 al.vert = 0x01      
 style.alignment = al
 # Calibri
-rate = 107.37
+rate = 107.5
 class MC():
     def __init__(self,coin):
 
@@ -38,14 +40,19 @@ class MC():
         
 
     def get_data(self):
-        #start=20200101&end=20200202"
-        url = "https://coinmarketcap.com/currencies/" + self.coin +"/historical-data/?start=20200301&end=202000401"
-        print(url)
-        headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
+        #start=20200101&end=20200202"04/28/2013
+
+        url = "https://coinmarketcap.com/currencies/" + self.coin +"/historical-data/?start=20201101&end=202001201"
+        # print(url)
+        ua = UserAgent()
+
+        headers = {'User-Agent':ua.random}
         req = Request(url=url, headers=headers)
         html = urlopen(req).read()
-
-        bsObj = BeautifulSoup(html,"html.parser")
+        time.sleep(4)
+        # print(html)
+        # bsObj = BeautifulSoup(html,"html.parser")
+        bsObj = BeautifulSoup(open('./coin/' + self.coin+'.html').read())
 
         # 
 
@@ -55,13 +62,13 @@ class MC():
             d = i.text.replace(",","")
             datetime_object = datetime.strptime(d, '%b %d %Y')
             date_str_list.append(datetime_object)
-            # print(str(datetime_object))
+            print("datetime_object",str(datetime_object))
         
         tr_list = bsObj.findAll('td', class_='cmc-table__cell cmc-table__cell--right')
         j = 1
         k = 0
         print("===")
-        print(len(date_str_list))
+        print(len(date_str_list),type(date_list),len(date_list))
         print(len(tr_list))
         print("===")
         for index, i in enumerate(tr_list):
@@ -69,7 +76,7 @@ class MC():
             if index % 6 == 0:
                 print("---")
                 j = j + 1
-                print(index)
+                print('price',index,i)
                 self.table.write(j,0,str(date_str_list[int(index / 6) ]))
                 k = 0
                 
@@ -92,15 +99,17 @@ if __name__ == "__main__":
     
     try:
         # stellar xml
-        # coin_list = ["bitcoin", "bitcoin-cash", "ethereum","litecoin", "xrp", "monacoin", "ethereum-classic"]
-        coin_list = ["nem", "lisk", "bitcrystals", "comsa-eth", "factom", "pepe-cash", "qash", "storjcoin-x","counterparty"]
-        coin_list = ["horizen","tether", "binance-coin", "eos", "bitcoin-sv","dogecoin","stellar","cardano","qtum"]
+        coin_list = ["bitcoin", "bitcoin-cash", "ethereum","litecoin", "xrp", "monacoin", "ethereum-classic"]
+        # coin_list = ["nem","lisk","bitcrystals","qash","counterparty","comsa-eth"]
+
+        # coin_list = ["horizen","tether", "binance-coin", "eos", "bitcoin-sv","dogecoin","stellar","cardano","qtum","factom"]
+        coin_list = ["bitcoin"]
 
         for i in coin_list:
             mc = MC(i)
             mc.get_data()
             file_name = time.strftime("%Y-%m-%d", time.localtime())
-            time.sleep(3)
+            time.sleep(5)
         data.save(file_name + '.xls')
 
     except Exception as e:
