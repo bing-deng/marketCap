@@ -1,3 +1,7 @@
 xlwt
 beautifulsoup4
 selenium
+requests
+pyautogui
+Pillow
+UserAgent

@@ -16,15 +16,18 @@ driver.maximize_window() # 窗口最大化
 
 
 # coin_list = ["bitcoin", "bitcoin-cash", "ethereum","litecoin", "xrp", "monacoin", "ethereum-classic"]
-
-coin_list = ["bitcoin", "bitcoin-cash", "ethereum","litecoin", "xrp", "monacoin", "ethereum-classic","nem","lisk","bitcrystals","qash","counterparty","comsa-eth","horizen","tether", "binance-coin", "eos", "bitcoin-sv","dogecoin","stellar","cardano","qtum","factom"]
+#  comsa-eth no data
+coin_list = ["bitcoin", "bitcoin-cash", "ethereum","litecoin", "xrp", "monacoin", "ethereum-classic","nem","lisk","qash","counterparty","comsa-eth","horizen","tether", "binance-coin", "eos", "bitcoin-sv","dogecoin","stellar","cardano","qtum","factom","polkadot-new","tron"]
+# coin_list = ["horizen","tether", "binance-coin", "eos", "bitcoin-sv","dogecoin","stellar","cardano","qtum","factom"]
+# coin_list = ["xrp"]
 
 
 for i in coin_list:
         
     #first page -------------------------------------------------
-    driver.get('https://coinmarketcap.com/currencies/'+ i + '/historical-data/?start=20201101&end=202001201')
-    driver.implicitly_wait(2)
+    driver.get('https://coinmarketcap.com/currencies/'+ i + '/historical-data/?start=20210101&end=20210208')
+    driver.implicitly_wait(15)
+    time.sleep(13)
     print(driver.page_source)
     f = open('coin/'+i+'.html','w')
     f.write(str(driver.page_source))

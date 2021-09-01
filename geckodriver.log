@@ -1,0 +1,10 @@
+1616649064873	geckodriver	INFO	Listening on 127.0.0.1:56194
+1616649065829	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1r/ntbdcb1s5dn45r5scj615c940000gn/T/rust_mozprofile5jfk27"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1616649074420	Marionette	INFO	Listening on port 56207
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+1616727771583	Marionette	INFO	Stopped listening on port 56207
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
